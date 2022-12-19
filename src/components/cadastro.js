@@ -1,7 +1,33 @@
 import styled  from 'styled-components'
 import { Link } from "react-router-dom";
+import { useState } from 'react';
+import axios from 'axios';
 
 export default function Cadastro() {
+    const[email,setemail]=useState('')
+    const[senha,setsenha]=useState('')
+    const[image,setimage]=useState('')
+    const[name,setname]=useState('')
+    const[info,setinfo]=useState([])
+    console.log(info)
+
+    function Cadastrar(){
+        const cadastro = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up',
+        {
+            email: email,
+            name: name,
+            image: image,
+            password: senha
+        }
+        )
+        cadastro.then(deucerto)
+    }
+
+    function deucerto(response){
+        setinfo(response.data)
+    }
+
+
   return (
     <div>
           <Imagem>
@@ -12,22 +38,22 @@ export default function Cadastro() {
       </Imagem>
       <Titulo>TrackIt</Titulo>
       <Input>
-        <input placeholder="email"></input>
+        <input onChange={event => setemail(event.target.value)} placeholder="email"></input>
       </Input>
       <Input>
-        <input placeholder="senha"></input>
+        <input onChange={event => setsenha(event.target.value)} placeholder="senha"></input>
       </Input>
       <Input>
-        <input placeholder="nome"></input>
+        <input onChange={event => setname(event.target.value)} placeholder="nome"></input>
       </Input>
       <Input>
-        <input placeholder="foto"></input>
+        <input onChange={event => setimage(event.target.value)} placeholder="foto"></input>
       </Input>
       <Botao>
-        <button>Cadastrar</button>
+        <button onClick={Cadastrar}>Cadastrar</button>
       </Botao>
       <Link to="/">
-        <Logar>Não tem uma conta? Cadastre-se!</Logar>
+        <Logar>Já tem uma conta? Faça login!</Logar>
       </Link>
     </div>
   );

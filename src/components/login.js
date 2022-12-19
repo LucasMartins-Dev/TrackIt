@@ -1,7 +1,27 @@
 import styled  from 'styled-components'
 import { Link } from "react-router-dom";
+import { useState } from 'react';
+import axios from 'axios';
 
 export default function Login() {
+
+  const[email,setemail]=useState('')
+  const[senha,setsenha]=useState('')
+  console.log(email)
+  console.log(senha)
+
+function logar (){
+
+  const logando = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login',
+  {
+    email: email,
+    password: senha
+  }
+  )
+  logando.then()
+  
+}
+
   return (
     <div>
       <Imagem>
@@ -12,13 +32,13 @@ export default function Login() {
       </Imagem>
       <Titulo>TrackIt</Titulo>
       <Input>
-        <input placeholder="email"></input>
+        <input onChange={event => setemail(event.target.value)} placeholder="email"></input>
       </Input>
       <Input>
-        <input placeholder="senha"></input>
+        <input onChange={event => setsenha(event.target.value)} placeholder="senha"></input>
       </Input>
       <Botao>
-        <button>Entrar</button>
+        <button onClick={logar}>Entrar</button>
       </Botao>
       <Link to="/cadastro">
         <Cadastro>Não tem uma conta? Cadastre-se!</Cadastro>
