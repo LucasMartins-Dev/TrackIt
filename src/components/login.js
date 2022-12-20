@@ -42,15 +42,15 @@ function respondeu(response){
       </Imagem>
       <Titulo>TrackIt</Titulo>
       <Input>
-        <input onChange={event => setemail(event.target.value)} placeholder="email"></input>
+        <input data-identifier="input-email" onChange={event => setemail(event.target.value)} placeholder="email"></input>
       </Input>
       <Input>
-        <input onChange={event => setsenha(event.target.value)} placeholder="senha"></input>
+        <input data-identifier="input-password"  onChange={event => setsenha(event.target.value)} placeholder="senha"></input>
       </Input>
       <Botao>
-        <button onClick={logar}>Entrar</button>
+        <button data-identifier="login-btn" onClick={logar}>Entrar</button>
       </Botao>
-      <Link to="/cadastro">
+      <Link data-identifier="sign-up-action" to="/cadastro">
         <Cadastro>Não tem uma conta? Cadastre-se!</Cadastro>
       </Link>
     </div>

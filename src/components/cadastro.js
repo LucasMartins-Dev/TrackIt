@@ -38,21 +38,21 @@ export default function Cadastro() {
       </Imagem>
       <Titulo>TrackIt</Titulo>
       <Input>
-        <input onChange={event => setemail(event.target.value)} placeholder="email"></input>
+        <input data-identifier="input-email" onChange={event => setemail(event.target.value)} placeholder="email"></input>
       </Input>
       <Input>
-        <input onChange={event => setsenha(event.target.value)} placeholder="senha"></input>
+        <input data-identifier="input-password" onChange={event => setsenha(event.target.value)} placeholder="senha"></input>
       </Input>
       <Input>
-        <input onChange={event => setname(event.target.value)} placeholder="nome"></input>
+        <input data-identifier="input-name" onChange={event => setname(event.target.value)} placeholder="nome"></input>
       </Input>
       <Input>
-        <input onChange={event => setimage(event.target.value)} placeholder="foto"></input>
+        <input data-identifier="input-photo" onChange={event => setimage(event.target.value)} placeholder="foto"></input>
       </Input>
       <Botao>
         <button onClick={Cadastrar}>Cadastrar</button>
       </Botao>
-      <Link to="/">
+      <Link data-identifier="back-to-login-action" to="/">
         <Logar>Já tem uma conta? Faça login!</Logar>
       </Link>
     </div>
