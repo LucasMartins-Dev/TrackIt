@@ -2,8 +2,10 @@ import styled  from 'styled-components'
 import { Link } from "react-router-dom";
 import { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function Cadastro() {
+  const navigate = useNavigate();
     const[email,setemail]=useState('')
     const[senha,setsenha]=useState('')
     const[image,setimage]=useState('')
@@ -25,6 +27,7 @@ export default function Cadastro() {
 
     function deucerto(response){
         setinfo(response.data)
+        navigate("/")
     }
 
 
@@ -50,7 +53,7 @@ export default function Cadastro() {
         <input data-identifier="input-photo" onChange={event => setimage(event.target.value)} placeholder="foto"></input>
       </Input>
       <Botao>
-        <button onClick={Cadastrar}>Cadastrar</button>
+        <button data-test="signup-btn" onClick={Cadastrar}>Cadastrar</button>
       </Botao>
       <Link data-identifier="back-to-login-action" to="/">
         <Logar>Já tem uma conta? Faça login!</Logar>
