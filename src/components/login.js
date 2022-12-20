@@ -1,14 +1,16 @@
 import styled  from 'styled-components'
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
 
 export default function Login() {
-
+  const navigate = useNavigate();
   const[email,setemail]=useState('')
   const[senha,setsenha]=useState('')
+  const[info,setinfo]=useState(null)
   console.log(email)
-  console.log(senha)
+  console.log(info)
 
 function logar (){
 
@@ -18,8 +20,16 @@ function logar (){
     password: senha
   }
   )
-  logando.then()
+  logando.then(respondeu)
+  logando.catch((response)=>alert(response.data.message))
   
+ 
+}
+
+function respondeu(response){
+  setinfo(response.data)
+  navigate("/hoje")
+    console.log('oi')
 }
 
   return (
